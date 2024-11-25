@@ -1,0 +1,66 @@
+{
+  "name": "teste_silviana-2",
+  "owner_org": "",
+  "profile": "data-package",
+  "resources": [
+    {
+      "description": "Insira a descrição/explicação detalhada deste recurso.",
+      "dialect": {
+        "delimiter": ";"
+      },
+      "encoding": "utf-8-sig",
+      "format": "csv",
+      "hashing": "md5",
+      "name": "despesa-pessoal-acordo-judicial-brumadinho",
+      "path": "data/despesa-pessoal-acordo-judicial-brumadinho.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "ano_mes",
+            "type": "integer"
+          },
+          {
+            "name": "masp",
+            "type": "integer"
+          },
+          {
+            "name": "orgao_sigla",
+            "type": "string"
+          },
+          {
+            "name": "orgao",
+            "type": "string"
+          },
+          {
+            "name": "nome",
+            "type": "string"
+          },
+          {
+            "name": "valor",
+            "type": "number"
+          },
+          {
+            "name": "cargo_sigla",
+            "type": "string"
+          },
+          {
+            "name": "cargo_descricao",
+            "type": "string"
+          },
+          {
+            "name": "data_inicio_contrato",
+            "type": "date"
+          },
+          {
+            "name": "data_termino_contrato",
+            "type": "date"
+          }
+        ]
+      },
+      "scheme": "file",
+      "title": "Insira um título humanamente legível para este recurso."
+    }
+  ],
+  "title": "Teste_silviana 2"
+}
