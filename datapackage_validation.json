@@ -1,0 +1,136 @@
+{
+  "version": "4.16.6",
+  "time": 0.111,
+  "errors": [],
+  "tasks": [
+    {
+      "resource": {
+        "description": "Insira a descrição/explicação detalhada deste recurso.",
+        "dialect": {
+          "delimiter": ";"
+        },
+        "encoding": "utf-8-sig",
+        "format": "csv",
+        "hashing": "md5",
+        "name": "despesa-pessoal-acordo-judicial-brumadinho",
+        "path": "data/despesa-pessoal-acordo-judicial-brumadinho.csv",
+        "profile": "tabular-data-resource",
+        "schema": {
+          "fields": [
+            {
+              "name": "ano_mes",
+              "type": "integer"
+            },
+            {
+              "name": "masp",
+              "type": "integer"
+            },
+            {
+              "name": "orgao_sigla",
+              "type": "string"
+            },
+            {
+              "name": "orgao",
+              "type": "string"
+            },
+            {
+              "name": "nome",
+              "type": "string"
+            },
+            {
+              "name": "valor",
+              "type": "number"
+            },
+            {
+              "name": "cargo_sigla",
+              "type": "string"
+            },
+            {
+              "name": "cargo_descricao",
+              "type": "string"
+            },
+            {
+              "name": "data_inicio_contrato",
+              "type": "date"
+            },
+            {
+              "name": "data_termino_contrato",
+              "type": "date"
+            }
+          ]
+        },
+        "scheme": "file",
+        "title": "Insira um título humanamente legível para este recurso.",
+        "stats": {
+          "hash": "cce304d3002c248f7718951a625d8187",
+          "bytes": 383480,
+          "fields": 10,
+          "rows": 2440
+        }
+      },
+      "time": 0.1,
+      "scope": [
+        "hash-count-error",
+        "byte-count-error",
+        "field-count-error",
+        "row-count-error",
+        "blank-header",
+        "extra-label",
+        "missing-label",
+        "blank-label",
+        "duplicate-label",
+        "incorrect-label",
+        "blank-row",
+        "primary-key-error",
+        "foreign-key-error",
+        "extra-cell",
+        "missing-cell",
+        "type-error",
+        "constraint-error",
+        "unique-error"
+      ],
+      "partial": false,
+      "errors": [
+        {
+          "cell": "-",
+          "fieldName": "valor",
+          "fieldNumber": 6,
+          "fieldPosition": 6,
+          "cells": [
+            "202313",
+            "15777287",
+            "Instituto Mineiro de Gestão das Águas",
+            "IGAM",
+            "Pedro Henrique Da Silva Assuncao",
+            "-",
+            "AAMB",
+            "Analista Ambiental",
+            "2023-12-12",
+            "2024-06-12"
+          ],
+          "rowNumber": 1944,
+          "rowPosition": 1945,
+          "code": "type-error",
+          "name": "Type Error",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "type is \"number/default\"",
+          "message": "Type error in the cell \"-\" in row \"1945\" and field \"valor\" at position \"6\": type is \"number/default\"",
+          "description": "The value does not match the schema type and format for this field."
+        }
+      ],
+      "stats": {
+        "errors": 1
+      },
+      "valid": false
+    }
+  ],
+  "stats": {
+    "errors": 1,
+    "tasks": 1
+  },
+  "valid": false
+}
