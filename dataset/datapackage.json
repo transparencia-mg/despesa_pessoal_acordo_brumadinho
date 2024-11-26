@@ -1,10 +1,10 @@
 {
-  "name": "teste_silviana-2",
-  "owner_org": "",
+  "name": "despesa_pessoal_acordo_brumadinho",
+  "owner_org": "secretaria-de-estado-de-planejamento-e-gestao-seplag",
   "profile": "data-package",
   "resources": [
     {
-      "description": "Insira a descrição/explicação detalhada deste recurso.",
+      "description": "Este repositório tem o objetivo de divulgar os valores gastos pelo Governo de Minas Gerais com despesas de pessoal para atuação exclusiva no apoio à execução e monitoramento do Acordo Judicial de Reparação pelo rompimento em Brumadinho.",
       "dialect": {
         "delimiter": ";"
       },
@@ -18,49 +18,79 @@
         "fields": [
           {
             "name": "ano_mes",
-            "type": "integer"
+            "type": "integer",
+            "title": "Ano e Mês",
+            "format": "default",
+            "description": "Ano e mês de referência de um pagamento ao contrato temporário. Os contratos temporários tem seu pagamento apurado no mês subsequente ao exercício. No caso, os valores mostrados foram pagos aos contratados no mês seguinte ao indicado pela coluna Ano_Mês, mas são referentes ao período indicado na coluna \"Ano_Mês\". Os valores referentes ao pagamento do décimo terceiro estão indicados pelo número 13, referente ao mês, na coluna \"Ano_Mês\"."
           },
           {
             "name": "masp",
-            "type": "integer"
+            "type": "integer",
+            "title": "Masp",
+            "format": "default",
+            "description": "Número da matrícula do servidor público com dígito verificador - MASP. Esse número identifica a pessoa dentro dos sistemas de gestão de pessoal do Governo do Estado."
           },
           {
             "name": "orgao_sigla",
-            "type": "string"
+            "type": "string",
+            "title": "Sigla do órgão",
+            "format": "default",
+            "description": "Sigla do órgão no qual o contratado temporariamente está trabalhando."
           },
           {
             "name": "orgao",
-            "type": "string"
+            "type": "string",
+            "title": "Órgão",
+            "format": "default",
+            "description": "Órgão no qual o contratado temporariamente está trabalhando."
           },
           {
             "name": "nome",
-            "type": "string"
+            "type": "string",
+            "title": "Nome",
+            "format": "default",
+            "description": "Nome da pessoa que firmou o contrato temporário com o Governo do Estado."
           },
           {
             "name": "valor",
-            "type": "number"
+            "type": "number",
+            "title": "Valor",
+            "format": "default",
+            "description": "Valor pago ao contrato temporário em um determinado mês e ano."
           },
           {
             "name": "cargo_sigla",
-            "type": "string"
+            "type": "string",
+            "title": "Sigla do cargo",
+            "format": "default",
+            "description": "Sigla do cargo no qual o contratado temporariamente foi investido."
           },
           {
             "name": "cargo_descricao",
-            "type": "string"
+            "type": "string",
+            "title": "Descrição do Cargo",
+            "format": "default",
+            "description": "Nome do cargo no qual o contratado temporariamente foi investido."
           },
           {
             "name": "data_inicio_contrato",
-            "type": "date"
+            "type": "date",
+            "title": "Data de início do contrato",
+            "format": "default",
+            "description": "Data na qual o contratado temporariamente entrou em exercício."
           },
           {
             "name": "data_termino_contrato",
-            "type": "date"
+            "type": "date",
+            "title": "Data de término do contrato",
+            "format": "default",
+            "description": "Data na qual o contratado temporariamente rescindiu  o seu contrato."
           }
         ]
       },
       "scheme": "file",
-      "title": "Insira um título humanamente legível para este recurso."
+      "title": "Despesa de Pessoal - Acordo Judicial da Vale"
     }
   ],
-  "title": "Teste_silviana 2"
+  "title": "Despesa de Pessoal - Acordo Judicial da Vale"
 }
