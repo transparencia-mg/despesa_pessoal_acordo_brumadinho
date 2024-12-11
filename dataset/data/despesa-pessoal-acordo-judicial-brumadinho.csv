@@ -1,9 +1,9 @@
 ﻿ano_mes;masp;orgao_sigla;orgao;nome;valor;cargo_sigla;cargo_descricao;data_inicio_contrato;data_termino_contrato
-202201;10675825;Secretaria de Estado de Saúde;cge;Adriana Coelho Soares;5975.27;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
+202201;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;5975.27;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
 202202;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;4864.34;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
 202203;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;5598.05;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
-202204;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;5411.88;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
-202205;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;7224.82;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
+202204;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;5411.880000000001;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
+202205;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;7224.820000000001;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
 202206;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;6780.63;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
 202207;10675825;Secretaria de Estado de Saúde;SES;Adriana Coelho Soares;6864.63;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-06-19
 202201;14921084;Instituto Estadual de Florestas;IEF;Adriana Cristina Dias;8869.76;AAMB;Analista Ambiental;2021-02-02;2022-05-26
@@ -148,9 +148,9 @@
 202404;15273139;Secretaria de Estado de Saúde;SES;Aline Bueno Hott;7510.960000000001;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2024-06-30
 202405;15273139;Secretaria de Estado de Saúde;SES;Aline Bueno Hott;6531.72;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2024-06-30
 202201;14908073;Secretaria de Estado de Desenvolvimento Social;SEDESE;Aline Ellen Rodrigues Santos;3420.35;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-01
-202202;14908073;Secretaria de Estado de Desenvolvimento Social;SEDESE;Aline Ellen Rodrigues Santos;504.6900000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-01
+202202;14908073;Secretaria de Estado de Desenvolvimento Social;SEDESE;Aline Ellen Rodrigues Santos;5046.9;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-01
 202201;14946164;Instituto do Patrimônio Histórico e Artístico;IEPHA;Aline Quiroga Neves;3554.860000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
-202205;14946164;Instituto do Patrimônio Histórico e Artístico;IEPHA;Aline Quiroga Neves;799.0400000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
+202205;14946164;Instituto do Patrimônio Histórico e Artístico;IEPHA;Aline Quiroga Neves;7990.4;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202202;14946164;Instituto do Patrimônio Histórico e Artístico;IEPHA;Aline Quiroga Neves;4277.23;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202203;14946164;Instituto do Patrimônio Histórico e Artístico;IEPHA;Aline Quiroga Neves;2981.37;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202201;14913578;Secretaria de Estado de Agricultura, Pecuária e Abastecimento;SEAPA;Ana Cláudia Damáris Pereira Da Silva;2077.54;TDR;Técnico de Desenvolvimento Rural;2020-11-09;2022-01-30
@@ -318,7 +318,7 @@
 202205;14921217;Instituto Estadual de Florestas;IEF;Angélica Diolinda Gonçalves;4184.029999999999;TAMB;Contrato Técnico em Licenciamento Lei 18185/2009;2021-02-02;2022-05-26
 202201;13585054;Secretaria de Cultura e Turismo;SECULT;Angelina Camelo Bagetti;3566.320000000001;GCULT;Gestor De Cultura;2021-03-22;2022-04-11
 202202;13585054;Secretaria de Cultura e Turismo;SECULT;Angelina Camelo Bagetti;3468.110000000001;GCULT;Gestor De Cultura;2021-03-22;2022-04-11
-202204;13585054;Secretaria de Cultura e Turismo;SECULT;Angelina Camelo Bagetti;455.5999999999999;GCULT;Gestor De Cultura;2021-03-22;2022-04-11
+202204;13585054;Secretaria de Cultura e Turismo;SECULT;Angelina Camelo Bagetti;4556;GCULT;Gestor De Cultura;2021-03-22;2022-04-11
 202203;13585054;Secretaria de Cultura e Turismo;SECULT;Angelina Camelo Bagetti;4530.94;GCULT;Gestor De Cultura;2021-03-22;2022-04-11
 202205;13585054;Secretaria de Cultura e Turismo;SECULT;Angelina Camelo Bagetti;2188.17;GCULT;Gestor De Cultura;2021-03-22;2022-04-11
 202307;15284144;Secretaria de Estado de Saúde;SES;Angelina Cecilia Firmiano;2511.89;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2023-06-30
@@ -337,8 +337,8 @@
 202212;15284144;Secretaria de Estado de Saúde;SES;Angelina Cecilia Firmiano;6764.25;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2023-06-30
 202201;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;8957.609999999999;AAMB;Analista Ambiental;2021-02-02;2022-03-02
 202202;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;5837.26;AAMB;Analista Ambiental;2021-02-02;2022-03-02
-202203;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;334.2300000000001;AAMB;Analista Ambiental;2021-02-02;2022-03-02
-202204;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;216.8100000000002;AAMB;Analista Ambiental;2021-02-02;2022-03-02
+202203;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;3342.3;AAMB;Analista Ambiental;2021-02-02;2022-03-02
+202204;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;2168.1;AAMB;Analista Ambiental;2021-02-02;2022-03-02
 202304;11271459;Instituto Estadual de Florestas;IEF;Antoniel Silva Fernandes;8456.64;AAMB;Analista Ambiental;2022-07-01;2023-08-21
 202302;11271459;Instituto Estadual de Florestas;IEF;Antoniel Silva Fernandes;8788.7;AAMB;Analista Ambiental;2022-07-01;2023-08-21
 202205;11271459;Instituto Mineiro de Gestão das Águas;IGAM;Antoniel Silva Fernandes;849.37;AAMB;Analista Ambiental;2021-02-02;2022-03-02
@@ -373,7 +373,7 @@
 202202;13084363;Secretaria de Estado de Desenvolvimento Social;SEDESE;Breno Junior Porfírio;2489.57;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202203;13084363;Secretaria de Estado de Desenvolvimento Social;SEDESE;Breno Junior Porfírio;3807.410000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202204;13084363;Secretaria de Estado de Desenvolvimento Social;SEDESE;Breno Junior Porfírio;3812.96;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
-202205;13084363;Secretaria de Estado de Desenvolvimento Social;SEDESE;Breno Junior Porfírio;561.6100000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
+202205;13084363;Secretaria de Estado de Desenvolvimento Social;SEDESE;Breno Junior Porfírio;5616.1;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202201;14908081;Secretaria de Estado de Desenvolvimento Social;SEDESE;Bruna Ceruti Quintanilha;3126.260000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-01-19
 202201;12549;Empresa de Pesquisa Agropecuária;EPAMIG;Bruna Maria Santos De Oliveira;6271.496000000001;TNME TECNICO DE NIVEL MEDIO II;TÉCNICO AGROPECUÁRIA - AGRÍCOLA;2020-11-09;2022-06-24
 202202;12549;Empresa de Pesquisa Agropecuária;EPAMIG;Bruna Maria Santos De Oliveira;6190.636;TNME TECNICO DE NIVEL MEDIO II;TÉCNICO AGROPECUÁRIA - AGRÍCOLA;2020-11-09;2022-06-24
@@ -590,7 +590,7 @@
 202202;14908099;Secretaria de Estado de Desenvolvimento Social;SEDESE;Claudia Tania Silva Colares;2526.24;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202204;14908099;Secretaria de Estado de Desenvolvimento Social;SEDESE;Claudia Tania Silva Colares;3842.84;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202206;14908099;Secretaria de Estado de Desenvolvimento Social;SEDESE;Claudia Tania Silva Colares;1025.88;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
-202205;14908099;Secretaria de Estado de Desenvolvimento Social;SEDESE;Claudia Tania Silva Colares;880.0400000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
+202205;14908099;Secretaria de Estado de Desenvolvimento Social;SEDESE;Claudia Tania Silva Colares;8800.4;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202207;15266901;Instituto Estadual de Florestas;IEF;Cláudio Henrique Pires E Silva;8727.6;AAMB;Analista Ambiental;2022-07-01;2024-06-21
 202208;15266901;Instituto Estadual de Florestas;IEF;Cláudio Henrique Pires E Silva;8869.15;AAMB;Analista Ambiental;2022-07-01;2024-06-21
 202209;15266901;Instituto Estadual de Florestas;IEF;Cláudio Henrique Pires E Silva;8852.97;AAMB;Analista Ambiental;2022-07-01;2024-06-21
@@ -1163,7 +1163,7 @@
 202201;14946685;Instituto do Patrimônio Histórico e Artístico;IEPHA;Guilherme Eugênio Moreira;3554.860000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202203;14946685;Instituto do Patrimônio Histórico e Artístico;IEPHA;Guilherme Eugênio Moreira;2981.37;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202202;14946685;Instituto do Patrimônio Histórico e Artístico;IEPHA;Guilherme Eugênio Moreira;4282.129999999999;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
-202205;14946685;Instituto do Patrimônio Histórico e Artístico;IEPHA;Guilherme Eugênio Moreira;799.0400000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
+202205;14946685;Instituto do Patrimônio Histórico e Artístico;IEPHA;Guilherme Eugênio Moreira;7990.4;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202201;14913792;Secretaria de Estado de Saúde;SES;Gustavo Alves Fernandes;6468.039999999999;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-03-23
 202202;14913792;Secretaria de Estado de Saúde;SES;Gustavo Alves Fernandes;1212.7;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-03-23
 202204;14913792;Secretaria de Estado de Saúde;SES;Gustavo Alves Fernandes;5742.320000000001;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-03-23
@@ -1193,7 +1193,7 @@
 202211;10677748;Instituto do Patrimônio Histórico e Artístico;IEPHA;Helaine Nolasco Queiroz;4399.33;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-12-21
 202212;10677748;Instituto do Patrimônio Histórico e Artístico;IEPHA;Helaine Nolasco Queiroz;4675.02;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-12-21
 202213;10677748;Instituto do Patrimônio Histórico e Artístico;IEPHA;Helaine Nolasco Queiroz;1519.92;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-12-21
-202205;10677748;Instituto do Patrimônio Histórico e Artístico;IEPHA;Helaine Nolasco Queiroz;799.0400000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-12-21
+202205;10677748;Instituto do Patrimônio Histórico e Artístico;IEPHA;Helaine Nolasco Queiroz;7990.4;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-12-21
 202201;14921704;Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável;SEMAD;Helen Fonseca Moreira;8816.420000000002;GAMB;Gestor Ambiental;2021-02-02;2022-05-26
 202202;14921704;Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável;SEMAD;Helen Fonseca Moreira;6809.94;GAMB;Gestor Ambiental;2021-02-02;2022-05-26
 202203;14921704;Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável;SEMAD;Helen Fonseca Moreira;6161.9;GAMB;Gestor Ambiental;2021-02-02;2022-05-26
@@ -1266,7 +1266,7 @@
 202202;14911051;Secretaria de Estado de Desenvolvimento Social;SEDESE;Janaina Araújo Teixeira;2504.57;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-10-01;2022-04-29
 202204;14911051;Secretaria de Estado de Desenvolvimento Social;SEDESE;Janaina Araújo Teixeira;3833.52;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-10-01;2022-04-29
 202206;14911051;Secretaria de Estado de Desenvolvimento Social;SEDESE;Janaina Araújo Teixeira;1025.88;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-10-01;2022-04-29
-202205;14911051;Secretaria de Estado de Desenvolvimento Social;SEDESE;Janaina Araújo Teixeira;869.0000000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-10-01;2022-04-29
+202205;14911051;Secretaria de Estado de Desenvolvimento Social;SEDESE;Janaina Araújo Teixeira;8690;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-10-01;2022-04-29
 202406;15694219;Secretaria de Estado de Saúde;SES;Jeferson Junior Da Silva;7103.06;EPGS;Especialista em Políticas e Gestão da Saúde;2023-08-08;
 202308;15694219;Secretaria de Estado de Saúde;SES;Jeferson Junior Da Silva;5195.57;EPGS;Especialista em Políticas e Gestão da Saúde;2023-08-08;
 202309;15694219;Secretaria de Estado de Saúde;SES;Jeferson Junior Da Silva;6619.79;EPGS;Especialista em Políticas e Gestão da Saúde;2023-08-08;
@@ -1631,7 +1631,7 @@
 202203;8096794;Secretaria de Estado de Desenvolvimento Social;SEDESE;Lucia Ines De Carvalho Veiga;5020.13;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202204;8096794;Secretaria de Estado de Desenvolvimento Social;SEDESE;Lucia Ines De Carvalho Veiga;3821.079999999999;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202206;8096794;Secretaria de Estado de Desenvolvimento Social;SEDESE;Lucia Ines De Carvalho Veiga;1025.88;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
-202205;8096794;Secretaria de Estado de Desenvolvimento Social;SEDESE;Lucia Ines De Carvalho Veiga;869.0000000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
+202205;8096794;Secretaria de Estado de Desenvolvimento Social;SEDESE;Lucia Ines De Carvalho Veiga;8690;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202201;13433651;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luciana De Rezende Silva;3526.68;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202203;13433651;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luciana De Rezende Silva;2944.7;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202202;13433651;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luciana De Rezende Silva;4247.910000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
@@ -1657,11 +1657,11 @@
 202201;14946750;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luiza Duarte De Freitas;3563.35;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202203;14946750;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luiza Duarte De Freitas;2981.37;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202202;14946750;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luiza Duarte De Freitas;4287.03;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
-202205;14946750;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luiza Duarte De Freitas;799.0400000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
+202205;14946750;Instituto do Patrimônio Histórico e Artístico;IEPHA;Luiza Duarte De Freitas;7990.4;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202201;10167344;Instituto do Patrimônio Histórico e Artístico;IEPHA;Maísa Furst Miranda;3563.35;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202203;10167344;Instituto do Patrimônio Histórico e Artístico;IEPHA;Maísa Furst Miranda;2981.37;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202202;10167344;Instituto do Patrimônio Histórico e Artístico;IEPHA;Maísa Furst Miranda;4284.58;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
-202205;10167344;Instituto do Patrimônio Histórico e Artístico;IEPHA;Maísa Furst Miranda;799.0400000000001;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
+202205;10167344;Instituto do Patrimônio Histórico e Artístico;IEPHA;Maísa Furst Miranda;7990.4;AGPR;Analista de Gestão, Proteção e Restauro;2021-03-22;2022-03-22
 202201;13560982;Secretaria de Estado de Saúde;SES;Marcela De Lacerda Alexandrino;3773.54;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-07-21
 202202;13560982;Secretaria de Estado de Saúde;SES;Marcela De Lacerda Alexandrino;4559.95;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-07-21
 202203;13560982;Secretaria de Estado de Saúde;SES;Marcela De Lacerda Alexandrino;7129.93;EPGS;Especialista em Políticas e Gestão da Saúde;2020-10-27;2022-07-21
@@ -1701,7 +1701,7 @@
 202307;15289382;Secretaria de Estado de Saúde;SES;Marcos Luiz De Souza;2511.89;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2023-06-30
 202201;11409190;Secretaria de Estado de Desenvolvimento Social;SEDESE;Marcus Vinícius Costa Lage;3580.24;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-14
 202203;11409190;Secretaria de Estado de Desenvolvimento Social;SEDESE;Marcus Vinícius Costa Lage;5187.55;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-14
-202202;11409190;Secretaria de Estado de Desenvolvimento Social;SEDESE;Marcus Vinícius Costa Lage;827.1300000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-14
+202202;11409190;Secretaria de Estado de Desenvolvimento Social;SEDESE;Marcus Vinícius Costa Lage;8271.3;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-14
 202205;11409190;Secretaria de Estado de Desenvolvimento Social;SEDESE;Marcus Vinícius Costa Lage;528.01;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-02-14
 202213;13397922;Secretaria de Estado de Saúde;SES;Maria Fernanda Cardoso;2509.34;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2023-06-30
 202207;13397922;Secretaria de Estado de Saúde;SES;Maria Fernanda Cardoso;6782.68;EPGS;Especialista em Políticas e Gestão da Saúde;2022-07-01;2023-06-30
@@ -1730,7 +1730,7 @@
 202203;12468534;Secretaria de Estado de Desenvolvimento Social;SEDESE;Maria Tereza Santos Oliveira Acipreste;3868.24;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202204;12468534;Secretaria de Estado de Desenvolvimento Social;SEDESE;Maria Tereza Santos Oliveira Acipreste;3859.5;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202202;12468534;Secretaria de Estado de Desenvolvimento Social;SEDESE;Maria Tereza Santos Oliveira Acipreste;2499.24;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
-202205;12468534;Secretaria de Estado de Desenvolvimento Social;SEDESE;Maria Tereza Santos Oliveira Acipreste;880.0400000000001;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
+202205;12468534;Secretaria de Estado de Desenvolvimento Social;SEDESE;Maria Tereza Santos Oliveira Acipreste;8800.4;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202206;12468534;Secretaria de Estado de Desenvolvimento Social;SEDESE;Maria Tereza Santos Oliveira Acipreste;1025.88;ANGPD;Anal. de Gestão e Políticas Públicas em Desenvolvimento;2020-09-01;2022-04-29
 202201;12552;Empresa de Pesquisa Agropecuária;EPAMIG;Marialva Alvarenga Moreira;11889.216;TNSU TECNICO DE NIVEL SUPERIOR I;ENGENHEIRO AGRÔNOMO;2020-11-09;2022-06-24
 202202;12552;Empresa de Pesquisa Agropecuária;EPAMIG;Marialva Alvarenga Moreira;11650.846000000001;TNSU TECNICO DE NIVEL SUPERIOR I;ENGENHEIRO AGRÔNOMO;2020-11-09;2022-06-24
@@ -2048,7 +2048,7 @@
 202201;14913651;Secretaria de Estado de Agricultura, Pecuária e Abastecimento;SEAPA;Rejane Cassia Da Cruz;3685.46;ANDR;Analista de Desenvolvimento Rural;2020-11-09;2022-03-14
 202202;14913651;Secretaria de Estado de Agricultura, Pecuária e Abastecimento;SEAPA;Rejane Cassia Da Cruz;3460.75;ANDR;Analista de Desenvolvimento Rural;2020-11-09;2022-03-14
 202203;14913651;Secretaria de Estado de Agricultura, Pecuária e Abastecimento;SEAPA;Rejane Cassia Da Cruz;2210.85;ANDR;Analista de Desenvolvimento Rural;2020-11-09;2022-03-14
-202205;14913651;Secretaria de Estado de Agricultura, Pecuária e Abastecimento;SEAPA;Rejane Cassia Da Cruz;645.5400000000001;ANDR;Analista de Desenvolvimento Rural;2020-11-09;2022-03-14
+202205;14913651;Secretaria de Estado de Agricultura, Pecuária e Abastecimento;SEAPA;Rejane Cassia Da Cruz;6455.4;ANDR;Analista de Desenvolvimento Rural;2020-11-09;2022-03-14
 202406;15265648;Fundação Estadual do Meio Ambiente;FEAM;Renata Spolti Leão;8345.88;AAMB;Analista Ambiental;2022-07-01;2024-06-21
 202404;15265648;Fundação Estadual do Meio Ambiente;FEAM;Renata Spolti Leão;9346.09;AAMB;Analista Ambiental;2022-07-01;2024-06-21
 202405;15265648;Fundação Estadual do Meio Ambiente;FEAM;Renata Spolti Leão;9024.77;AAMB;Analista Ambiental;2022-07-01;2024-06-21
@@ -2096,7 +2096,7 @@
 202205;15066137;Secretaria de Estado de Saúde;SES;Roberto Brandao Araujo;6766.880000000001;EPGS;Especialista em Políticas e Gestão da Saúde;2022-01-31;2022-05-19
 202202;15054331;Instituto Mineiro de Agropecuária;IMA;Roberto Ferreira De Carvalho;5327.759999999999;EGDA;Especialista em Gestão de Defesa Agropecuária;2021-11-18;2022-03-15
 202203;15054331;Instituto Mineiro de Agropecuária;IMA;Roberto Ferreira De Carvalho;3457.97;EGDA;Especialista em Gestão de Defesa Agropecuária;2021-11-18;2022-03-15
-202205;15054331;Instituto Mineiro de Agropecuária;IMA;Roberto Ferreira De Carvalho;851.5799999999999;EGDA;Especialista em Gestão de Defesa Agropecuária;2021-11-18;2022-03-15
+202205;15054331;Instituto Mineiro de Agropecuária;IMA;Roberto Ferreira De Carvalho;8515.8;EGDA;Especialista em Gestão de Defesa Agropecuária;2021-11-18;2022-03-15
 202203;14668842;Secretaria de Estado de Saúde;SES;Robson Luiz Barbosa Martins;5532.969999999999;EPGS;Especialista em Políticas e Gestão da Saúde;2022-01-31;2022-06-22
 202202;14668842;Secretaria de Estado de Saúde;SES;Robson Luiz Barbosa Martins;5060.509999999998;EPGS;Especialista em Políticas e Gestão da Saúde;2022-01-31;2022-06-22
 202204;14668842;Secretaria de Estado de Saúde;SES;Robson Luiz Barbosa Martins;5544.88;EPGS;Especialista em Políticas e Gestão da Saúde;2022-01-31;2022-06-22
