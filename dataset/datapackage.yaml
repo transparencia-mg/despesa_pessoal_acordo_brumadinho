@@ -45,6 +45,10 @@ resources:
           type: number
           title: Valor
           format: default
+          bareNumber: true
+          decimalChar: ','
+          constraints:
+              required: true
           description: Valor pago ao contrato temporário em um determinado mês e ano.
         - name: cargo_sigla
           type: string
