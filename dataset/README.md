@@ -1,4 +1,4 @@
-Este repositório tem o objetivo de divulgar os valores gastos pelo Governo de Minas Gerais com despesas de pessoal para atuação exclusiva no apoio à execução e monitoramento do Acordo Judicial de Reparação pelo rompimento em Brumadinho.
+Este repositório tem o objetivo de divulgar os valores gastos pelo Governo de Minas Gerais com despesas de pessoal para atuação exclusiva no apoio à execução e monitoramento do Acordo Judicial de Reparação pelo rompimento em Brumadinho...
 
 O Acordo Judicial, firmado em fevereiro de 2021 entre o Governo de Minas, MPMG, MPF, DPMG e a Vale S.A., com mediação do TJMG, destina R$ 37,68 bilhões para reparação, dos quais R$ 11,06 bilhões foram repassados ao Estado. Desse montante, R$ 310 milhões foram previstos para despesas públicas e contratações temporárias de pessoal (cláusula 4.4.10).
 
