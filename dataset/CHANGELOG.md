@@ -5,4 +5,4 @@ Baseado na filosofia [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.
 
 ### [1.0.0] - 2024-12-02
 
-- Versão inicial
+- Versão inicial (teste)
