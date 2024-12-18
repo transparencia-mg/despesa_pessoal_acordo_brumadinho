@@ -1,6 +1,6 @@
 {
   "version": "4.16.6",
-  "time": 0.119,
+  "time": 0.118,
   "errors": [],
   "tasks": [
     {
@@ -97,13 +97,13 @@
         "scheme": "file",
         "title": "Despesa de Pessoal - Acordo Judicial da Vale",
         "stats": {
-          "hash": "ad80b19566ff241d6e91635a5f4048ef",
-          "bytes": 383287,
+          "hash": "cce304d3002c248f7718951a625d8187",
+          "bytes": 383480,
           "fields": 10,
           "rows": 2440
         }
       },
-      "time": 0.108,
+      "time": 0.107,
       "scope": [
         "hash-count-error",
         "byte-count-error",
