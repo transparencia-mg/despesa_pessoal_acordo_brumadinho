@@ -4,5 +4,5 @@ O Acordo Judicial, firmado em fevereiro de 2021 entre o Governo de Minas, MPMG, 
 
 As informações sobre despesas de pessoal são retiradas do Sistema de Administração de Pessoal - SISAP, que é utilizado para gerenciar todos os dados de despesa de pessoal do Estado de Minas Gerais. As demais despesas são extraídas do Sistema de Administração Financeira - SIAFI, o que justifica a criação de um menu específico para o acompanhamento das despesas de pessoal, uma vez que se tratam de informações com fontes de informação diferentes. Os contratados listados atuam exclusivamente em atividades relacionadas ao rompimento das barragens em Brumadinho e, a partir de 2022, foram financiados pelos recursos do Acordo.
 
-A contratação desses profissionais ocorre por meio de Processos Seletivos Simplificados, detalhados no site do Comitê Pró Brumadinho. Mais informações sobre o Acordo podem ser acessadas na página do [Comitê Pró Brumadinho](https://www.mg.gov.br/pro-brumadinho). teste 4
+A contratação desses profissionais ocorre por meio de Processos Seletivos Simplificados, detalhados no site do Comitê Pró Brumadinho. Mais informações sobre o Acordo podem ser acessadas na página do [Comitê Pró Brumadinho](https://www.mg.gov.br/pro-brumadinho). teste 5
 
