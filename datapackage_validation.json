@@ -97,8 +97,8 @@
         "scheme": "file",
         "title": "Despesa de Pessoal - Acordo Judicial da Vale",
         "stats": {
-          "hash": "2b8768cd572287dc579018c4d1f883c6",
-          "bytes": 383690,
+          "hash": "05ea1acb1f67ad6b00ce1973c9e6e7ab",
+          "bytes": 383713,
           "fields": 10,
           "rows": 2440
         }
@@ -127,7 +127,7 @@
       "partial": false,
       "errors": [
         {
-          "cell": "-",
+          "cell": "",
           "fieldName": "valor",
           "fieldNumber": 6,
           "fieldPosition": 6,
@@ -137,7 +137,7 @@
             "Instituto Mineiro de Gestão das Águas",
             "IGAM",
             "Pedro Henrique Da Silva Assuncao",
-            "-",
+            "",
             "AAMB",
             "Analista Ambiental",
             "2023-12-12",
@@ -145,16 +145,16 @@
           ],
           "rowNumber": 1944,
           "rowPosition": 1945,
-          "code": "type-error",
-          "name": "Type Error",
+          "code": "constraint-error",
+          "name": "Constraint Error",
           "tags": [
             "#table",
             "#row",
             "#cell"
           ],
-          "note": "type is \"number/default\"",
-          "message": "Type error in the cell \"-\" in row \"1945\" and field \"valor\" at position \"6\": type is \"number/default\"",
-          "description": "The value does not match the schema type and format for this field."
+          "note": "constraint \"required\" is \"True\"",
+          "message": "The cell \"\" in row at position \"1945\" and field \"valor\" at position \"6\" does not conform to a constraint: constraint \"required\" is \"True\"",
+          "description": "A field value does not conform to a constraint."
         }
       ],
       "stats": {
