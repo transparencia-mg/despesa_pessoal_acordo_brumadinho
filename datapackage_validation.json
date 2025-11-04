@@ -1,6 +1,6 @@
 {
   "version": "4.16.6",
-  "time": 0.11,
+  "time": 0.116,
   "errors": [],
   "tasks": [
     {
@@ -103,7 +103,7 @@
           "rows": 0
         }
       },
-      "time": 0.097,
+      "time": 0.103,
       "scope": [
         "hash-count-error",
         "byte-count-error",
@@ -197,7 +197,7 @@
             "EPAMIG",
             "Empresa de Pesquisa Agropecuária",
             "Angela Maria Pereira Do Nascimento",
-            "14719.770000000002",
+            "14719.77",
             "TNSU TECNICO DE NIVEL SUPERIOR II",
             "Biologista",
             "2020-11-09 00:00:00",
@@ -257,7 +257,7 @@
             "EPAMIG",
             "Empresa de Pesquisa Agropecuária",
             "Angela Maria Pereira Do Nascimento",
-            "11635.216",
+            "11635.22",
             "TNSU TECNICO DE NIVEL SUPERIOR II",
             "Biologista",
             "2020-11-09 00:00:00",
@@ -287,7 +287,7 @@
             "EPAMIG",
             "Empresa de Pesquisa Agropecuária",
             "Angela Maria Pereira Do Nascimento",
-            "18201.986",
+            "18201.99",
             "TNSU TECNICO DE NIVEL SUPERIOR II",
             "Biologista",
             "2020-11-09 00:00:00",
@@ -317,7 +317,7 @@
             "EPAMIG",
             "Empresa de Pesquisa Agropecuária",
             "Angela Maria Pereira Do Nascimento",
-            "11873.586",
+            "11873.59",
             "TNSU TECNICO DE NIVEL SUPERIOR II",
             "Biologista",
             "2020-11-09 00:00:00",
@@ -377,7 +377,7 @@
             "EPAMIG",
             "Empresa de Pesquisa Agropecuária",
             "Bruna Maria Santos De Oliveira",
-            "6846.700000000001",
+            "6846.7",
             "TNME TECNICO DE NIVEL MEDIO II",
             "Técnico Agropecuária - Agrícola",
             "2020-11-09 00:00:00",
