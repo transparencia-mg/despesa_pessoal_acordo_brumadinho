@@ -1,6 +1,6 @@
 {
   "version": "4.16.6",
-  "time": 0.029,
+  "time": 0.176,
   "errors": [],
   "tasks": [
     {
@@ -97,13 +97,13 @@
         "scheme": "file",
         "title": "Despesa de Pessoal - Acordo Judicial da Vale",
         "stats": {
-          "hash": "778b44f1b5f315f7a8b16c8bab0a5012",
-          "bytes": 1817,
+          "hash": "866f9481e123555345be1114f1fd67d1",
+          "bytes": 539079,
           "fields": 10,
-          "rows": 10
+          "rows": 3530
         }
       },
-      "time": 0.017,
+      "time": 0.162,
       "scope": [
         "hash-count-error",
         "byte-count-error",
@@ -125,16 +125,47 @@
         "unique-error"
       ],
       "partial": false,
-      "errors": [],
+      "errors": [
+        {
+          "cell": "-",
+          "fieldName": "valor",
+          "fieldNumber": 6,
+          "fieldPosition": 6,
+          "cells": [
+            "202313",
+            "15777287",
+            "IGAM",
+            "Instituto Mineiro de Gestão das Águas",
+            "Pedro Henrique Da Silva Assuncao",
+            "-",
+            "AAMB",
+            "Analista Ambiental",
+            "2023-12-12",
+            "2024-06-12"
+          ],
+          "rowNumber": 1120,
+          "rowPosition": 1121,
+          "code": "type-error",
+          "name": "Type Error",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "type is \"number/default\"",
+          "message": "Type error in the cell \"-\" in row \"1121\" and field \"valor\" at position \"6\": type is \"number/default\"",
+          "description": "The value does not match the schema type and format for this field."
+        }
+      ],
       "stats": {
-        "errors": 0
+        "errors": 1
       },
-      "valid": true
+      "valid": false
     }
   ],
   "stats": {
-    "errors": 0,
+    "errors": 1,
     "tasks": 1
   },
-  "valid": true
+  "valid": false
 }
