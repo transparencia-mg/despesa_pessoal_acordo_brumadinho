@@ -1,13 +1,13 @@
 ﻿ano_mes;masp;orgao_sigla;orgao;nome;valor;cargo_sigla;cargo_descricao;data_inicio_contrato;data_termino_contrato
 202201;12547;EPAMIG;Empresa de Pesquisa Agropecuária;Albert Lennon Lima Martins;10435.79;TNME TECNICO DE NIVEL MEDIO III;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-01-18
 202206;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;23783.12;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
-202205;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;14719.770000000002;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
+202205;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;14719.77;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
 202204;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;12831.77;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
-202203;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;11635.216;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
-202202;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;18201.986;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
-202201;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;11873.586;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
+202203;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;11635.22;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
+202202;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;18201.99;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
+202201;12548;EPAMIG;Empresa de Pesquisa Agropecuária;Angela Maria Pereira Do Nascimento;11873.59;TNSU TECNICO DE NIVEL SUPERIOR II;Biologista;2020-11-09 00:00:00;2022-06-24
 202206;12549;EPAMIG;Empresa de Pesquisa Agropecuária;Bruna Maria Santos De Oliveira;17819.39;TNME TECNICO DE NIVEL MEDIO II;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-06-24
-202205;12549;EPAMIG;Empresa de Pesquisa Agropecuária;Bruna Maria Santos De Oliveira;6846.700000000001;TNME TECNICO DE NIVEL MEDIO II;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-06-24
+202205;12549;EPAMIG;Empresa de Pesquisa Agropecuária;Bruna Maria Santos De Oliveira;6846.7;TNME TECNICO DE NIVEL MEDIO II;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-06-24
 202204;12549;EPAMIG;Empresa de Pesquisa Agropecuária;Bruna Maria Santos De Oliveira;6846.700000000001;TNME TECNICO DE NIVEL MEDIO II;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-06-24
 202203;12549;EPAMIG;Empresa de Pesquisa Agropecuária;Bruna Maria Santos De Oliveira;6190.646000000001;TNME TECNICO DE NIVEL MEDIO II;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-06-24
 202202;12549;EPAMIG;Empresa de Pesquisa Agropecuária;Bruna Maria Santos De Oliveira;6190.636;TNME TECNICO DE NIVEL MEDIO II;Técnico Agropecuária - Agrícola;2020-11-09 00:00:00;2022-06-24
@@ -3528,4 +3528,4 @@
 202505;15646847;SES;Secretaria de Estado de Saúde;Victor Tadeu De Oliveira Suzano;8649.19;EPGS;Especialista em Políticas e Gestão da Saúde;19/06/2023;
 202504;8801698;SES;Secretaria de Estado de Saúde;Viviane Lucia Carneiro;6897.48;EPGS;Especialista em Políticas e Gestão da Saúde;01/10/2024;
 202505;8801698;SES;Secretaria de Estado de Saúde;Viviane Lucia Carneiro;6989.49;EPGS;Especialista em Políticas e Gestão da Saúde;01/10/2024;
-202506;8801698;SES;Secretaria de Estado de Saúde;Viviane Lucia Carneiro;6899.38;EPGS;Especialista em Políticas e Gestão da Saúde;;
+202506;8801698;SES;Secretaria de Estado de Saúde;Viviane Lucia Carneiro;6899.38;EPGS;Especialista em Políticas e Gestão da Saúde;01/10/2024;
