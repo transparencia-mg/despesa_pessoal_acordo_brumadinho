@@ -42,7 +42,7 @@ resources:
           format: default
           description: Nome da pessoa que firmou o contrato temporário com o Governo do Estado.
         - name: valor
-          type: number
+          type: string
           title: Valor
           format: default
           bareNumber: true
