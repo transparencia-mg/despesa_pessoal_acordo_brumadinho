@@ -53,7 +53,7 @@
           },
           {
             "name": "valor",
-            "type": "number",
+            "type": "string",
             "title": "Valor",
             "format": "default",
             "bareNumber": true,
