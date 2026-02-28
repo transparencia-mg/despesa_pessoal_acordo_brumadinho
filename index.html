@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despesa Pessoal - Acordo Brumadinho</title>
+
+    <!-- ==================== ESTILOS E BIBLIOTECAS ==================== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <style>
+        /* ==================== VARIÁVEIS E ESTILOS GLOBAIS ==================== */
+        :root {
+            --primary-dark: #1e3a5f;
+            --primary-darker: #0f2a44;
+            --accent-red: #c5303e;
+            --accent-bright: #b22234;
+            --background-light: #f4f6fb;
+            --card-bg: #ffffff;
+            --text-primary: #1e2f4a;
+            --border: #e2e8f0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-light);
+            padding-bottom: 20px;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================== HEADER ==================== */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+            padding: 20px 30px;
+            border-radius: 0 0 15px 15px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .dashboard-header h1 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        .dashboard-header p {
+            opacity: 0.9;
+            margin: 5px 0 0;
+        }
+
+        /* ==================== MENU DE NAVEGAÇÃO ==================== */
+        .nav-tabs-container {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        .nav-tabs {
+            border: none;
+            gap: 4px;
+            flex-wrap: nowrap;
+        }
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            transition: all 0.3s ease;
+            font-size: 15px;
+            white-space: nowrap;
+            background: none;
+        }
+        .nav-tabs .nav-link:hover {
+            background-color: rgba(30, 58, 95, 0.05);
+            color: var(--accent-red);
+        }
+        .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+            color: white;
+        }
+        .nav-tabs .nav-link .material-icons {
+            font-size: 16px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        /* ==================== DATA ATUALIZAÇÃO ==================== */
+        .data-atualizacao-container {
+            display: flex;
+            justify-content: left;
+            margin-bottom: 20px;
+        }
+        .data-atualizacao-box {
+            background: white;
+            border-radius: 8px;
+            padding: 8px 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* ==================== CARDS DE MÉTRICAS ==================== */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px 15px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-dark);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .metric-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .metric-card .header-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .metric-card .header-icon i {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        /* ==================== PAINEL DE FILTROS ==================== */
+        .filter-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-red);
+        }
+        .filter-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .form-control, .form-select {
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-red);
+            box-shadow: 0 0 0 3px rgba(197, 48, 62, 0.1);
+            outline: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-bright));
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: white;
+            border: 2px solid var(--primary-dark);
+            color: var(--primary-dark);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        /* ==================== GRÁFICOS ==================== */
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        .chart-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+        }
+        .chart-header h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .chart-container {
+            height: 260px;
+            position: relative;
+        }
+
+        /* ==================== TABELAS ==================== */
+        .table-panel {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .table-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .table-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .badge-count {
+            background: var(--accent-red);
+            color: white;
+            border-radius: 30px;
+            padding: 4px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            background: var(--primary-dark);
+            color: white;
+            font-weight: 600;
+            padding: 12px 8px;
+            text-align: left;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        tr:hover {
+            background-color: #f8fafd;
+        }
+        .valor-positivo {
+            font-weight: 700;
+            color: #0b5e42;
+        }
+
+        /* ==================== BUSCA ==================== */
+        .search-box {
+            margin: 15px 20px;
+        }
+        .search-box input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 16px;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .search-box input:focus {
+            border-color: var(--accent-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(197, 48, 62, 0.1);
+        }
+
+        /* ==================== DOWNLOAD LINKS ==================== */
+        .download-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .download-link:hover {
+            background: var(--accent-red);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* ==================== LOADING ==================== */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            gap: 10px;
+            backdrop-filter: blur(2px);
+        }
+        .spinner {
+            border: 4px solid rgba(0,0,0,0.1);
+            border-top: 4px solid var(--accent-red);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .footer-note {
+            text-align: center;
+            padding: 20px 0 10px;
+            font-size: 0.8rem;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- ==================== CABEÇALHO ==================== -->
+        <div class="dashboard-header">
+            <h1>Despesa com Pessoal</h1>
+            <p>Acordo Judicial de Brumadinho · Governo de Minas Gerais</p>
+        </div>
+
+        <!-- ==================== DATA ATUALIZAÇÃO ==================== -->
+        <div class="data-atualizacao-container">
+            <div class="data-atualizacao-box">
+                <i class="material-icons">update</i> Atualizado em: <span id="dataAtualizacao">Carregando...</span>
+            </div>
+        </div>
+
+        <!-- ==================== MENU DE ABAS ==================== -->
+        <div class="nav-tabs-container">
+            <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="geral-tab" data-bs-toggle="tab" data-bs-target="#geral" type="button" role="tab">
+                        <i class="material-icons">dashboard</i> Visão Geral
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="consulta-tab" data-bs-toggle="tab" data-bs-target="#consulta" type="button" role="tab">
+                        <i class="material-icons">search</i> Consulta Individual
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="downloads-tab" data-bs-toggle="tab" data-bs-target="#downloads" type="button" role="tab">
+                        <i class="material-icons">download</i> Downloads
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ==================== CONTEÚDO DAS ABAS ==================== -->
+        <div class="tab-content" id="mainTabContent">
+
+            <!-- ==================== ABA 1: VISÃO GERAL ==================== -->
+            <div class="tab-pane fade show active" id="geral" role="tabpanel">
+                <!-- Cards de métricas -->
+                <div class="metrics-grid" id="metricsContainer"></div>
+
+                <!-- Filtros da Visão Geral -->
+                <div class="filter-panel">
+                    <h5 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 15px;">
+                        <i class="fas fa-filter me-2"></i>Filtrar Visão Geral
+                    </h5>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="filter-label">Ano</label>
+                            <select class="form-select" id="filtroAnoGeral">
+                                <option value="todos">Todos os anos</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="filter-label">Mês</label>
+                            <select class="form-select" id="filtroMesGeral">
+                                <option value="todos">Todos os meses</option>
+                                <option value="01">Janeiro</option><option value="02">Fevereiro</option>
+                                <option value="03">Março</option><option value="04">Abril</option>
+                                <option value="05">Maio</option><option value="06">Junho</option>
+                                <option value="07">Julho</option><option value="08">Agosto</option>
+                                <option value="09">Setembro</option><option value="10">Outubro</option>
+                                <option value="11">Novembro</option><option value="12">Dezembro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="filter-label">Órgão</label>
+                            <select class="form-select" id="filtroOrgaoGeral"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="filter-label">Cargo</label>
+                            <select class="form-select" id="filtroCargoGeral"></select>
+                        </div>
+                    </div>
+                    <div class="mt-3 d-flex gap-2">
+                        <button class="btn-primary" id="btnAplicarFiltrosGeral">
+                            <i class="fas fa-search me-2"></i>Aplicar Filtros
+                        </button>
+                        <button class="btn-outline" id="btnLimparFiltrosGeral">
+                            <i class="fas fa-eraser me-2"></i>Limpar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="charts-row">
+                    <div class="chart-panel">
+                        <div class="chart-header"><h4>Despesa por Órgão (Top 5)</h4></div>
+                        <div class="chart-container"><canvas id="chartOrgao"></canvas></div>
+                    </div>
+                    <div class="chart-panel">
+                        <div class="chart-header"><h4>Despesa Mensal</h4></div>
+                        <div class="chart-container"><canvas id="chartMes"></canvas></div>
+                    </div>
+                </div>
+
+                <!-- Tabela Visão Geral -->
+                <div class="table-panel">
+                    <div class="table-header">
+                        <h3>Registros da Visão Geral</h3>
+                        <span class="badge-count" id="totalRegistrosGeral">0 registros</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="tabelaGeral">
+                            <thead>
+                                <tr>
+                                    <th>Ano/Mês</th><th>MASP</th><th>Órgão</th><th>Nome</th>
+                                    <th>Valor (R$)</th><th>Cargo</th><th>Início</th><th>Término</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyGeral"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== ABA 2: CONSULTA INDIVIDUAL ==================== -->
+            <div class="tab-pane fade" id="consulta" role="tabpanel">
+                <!-- Filtros da Consulta -->
+                <div class="filter-panel">
+                    <h5 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 15px;">
+                        <i class="fas fa-filter me-2"></i>Filtros de Consulta
+                    </h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="filter-label">Nome do Servidor</label>
+                            <input type="text" class="form-control" id="filtroNomeConsulta" placeholder="Ex: Albert Lennon">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="filter-label">MASP</label>
+                            <input type="text" class="form-control" id="filtroMaspConsulta" placeholder="Número do MASP">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="filter-label">Órgão</label>
+                            <select class="form-select" id="filtroOrgaoConsulta"></select>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn-primary w-100" id="btnFiltrarConsulta">
+                                <i class="fas fa-search me-2"></i>Filtrar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn-outline" id="limparFiltrosConsulta">
+                            <i class="fas fa-eraser me-2"></i>Limpar Filtros
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Busca textual -->
+                <div class="search-box">
+                    <input type="text" id="buscaTextualConsulta" placeholder="🔍 Buscar em todos os campos...">
+                </div>
+
+                <!-- Tabela de Consulta -->
+                <div class="table-panel">
+                    <div class="table-header">
+                        <h3>Resultados da Consulta</h3>
+                        <span class="badge-count" id="totalRegistrosConsulta">0 registros</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="tabelaConsulta">
+                            <thead>
+                                <tr>
+                                    <th>Ano/Mês</th><th>MASP</th><th>Órgão</th><th>Nome</th>
+                                    <th>Valor (R$)</th><th>Cargo</th><th>Início</th><th>Término</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyConsulta"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== ABA 3: DOWNLOADS ==================== -->
+            <div class="tab-pane fade" id="downloads" role="tabpanel">
+                <div class="filter-panel">
+                    <h4 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 20px;">
+                        <i class="fas fa-download me-2"></i>Fontes e Dados Completos
+                    </h4>
+                    <div class="download-links">
+                        <a href="https://github.com/transparencia-mg/despesa_pessoal_acordo_brumadinho" target="_blank" class="download-link">
+                            <i class="fab fa-github"></i> Repositório GitHub
+                        </a>
+                        <a href="https://raw.githubusercontent.com/transparencia-mg/despesa_pessoal_acordo_brumadinho/main/dataset/data/despesa-pessoal-acordo-judicial-brumadinho.csv" target="_blank" class="download-link">
+                            <i class="fas fa-database"></i> Download CSV (direto)
+                        </a>
+                        <a href="https://dados.mg.gov.br/dataset/despesa_pessoal_acordo_brumadinho" target="_blank" class="download-link">
+                            <i class="fas fa-external-link-alt"></i> Portal Dados MG
+                        </a>
+                        <button class="download-link" id="exportarConsultaBtn" style="background: #c5303e;">
+                            <i class="fas fa-file-csv"></i> Exportar consulta atual
+                        </button>
+                    </div>
+                    <p class="mt-4 text-muted small">
+                        Os dados são atualizados conforme o repositório oficial. O arquivo CSV contém todas as colunas originais.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-note">
+            Dados públicos · Transparência Governo de Minas Gerais · Acordo Brumadinho
+        </footer>
+    </div>
+
+    <!-- ==================== LOADING OVERLAY ==================== -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div> Carregando dados...
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function() {
+            // ============================================
+            // VARIÁVEIS GLOBAIS
+            // ============================================
+            let dadosCompletos = [];
+            let dadosFiltradosGeral = [];
+            let dadosFiltradosConsulta = [];
+            
+            // Gráficos
+            let orgaoChart, mesChart;
+
+            const CSV_URL = 'https://raw.githubusercontent.com/transparencia-mg/despesa_pessoal_acordo_brumadinho/main/dataset/data/despesa-pessoal-acordo-judicial-brumadinho.csv';
+
+            // ============================================
+            // FUNÇÕES AUXILIARES
+            // ============================================
+            function showLoading(show) {
+                document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+            }
+
+            function formatarValor(valor) {
+                return Number(valor).toLocaleString('pt-BR', { 
+                    style: 'currency', 
+                    currency: 'BRL',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+
+            function formatarData(dataStr) {
+                if (!dataStr || dataStr === 'null' || dataStr === '') return '';
+                return dataStr.substring(0, 10);
+            }
+
+            function updateDataAtualizacao() {
+                const agora = new Date();
+                document.getElementById('dataAtualizacao').innerText = 
+                    agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR');
+            }
+
+            // Extrair ano de AAAAMM
+            function extrairAno(anoMes) {
+                if (!anoMes || anoMes.length < 6) return '';
+                return anoMes.substring(0, 4);
+            }
+
+            function extrairMes(anoMes) {
+                if (!anoMes || anoMes.length < 6) return '';
+                return anoMes.substring(4, 6);
+            }
+
+            // ============================================
+            // CARREGAR DADOS DO CSV (CORRIGIDO)
+            // ============================================
+            async function carregarDados() {
+                showLoading(true);
+                try {
+                    const response = await fetch(CSV_URL);
+                    const csvText = await response.text();
+
+                    Papa.parse(csvText, {
+                        delimiter: ';',
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: (result) => {
+                            console.log('Primeira linha:', result.data[0]); // Debug
+                            
+                            dadosCompletos = result.data
+                                .filter(row => row.ano_mes && row.valor && row.nome) // Remove linhas vazias
+                                .map(row => {
+                                    // Converter valor: REMOVER PONTOS DE MILHAR e trocar vírgula por ponto
+                                    let valorStr = String(row.valor || '0')
+                                        .replace(/\./g, '')  // Remove pontos de milhar
+                                        .replace(',', '.');   // Troca vírgula decimal por ponto
+                                    
+                                    return {
+                                        ano_mes: String(row.ano_mes || '').trim().replace('.0', ''),
+                                        masp: String(row.masp || '').trim().replace('.0', ''),
+                                        orgao_sigla: (row.orgao_sigla || '').trim(),
+                                        orgao: (row.orgao || '').trim(),
+                                        nome: (row.nome || '').trim(),
+                                        valor: parseFloat(valorStr) || 0,
+                                        cargo_sigla: (row.cargo_sigla || '').trim(),
+                                        cargo_descricao: (row.cargo_descricao || '').trim(),
+                                        data_inicio: (row.data_inicio_contrato || '').trim(),
+                                        data_termino: (row.data_termino_contrato || '').trim()
+                                    };
+                                })
+                                .filter(d => d.ano_mes && d.valor > 0 && d.nome !== '');
+
+                            console.log('Total registros carregados:', dadosCompletos.length);
+                            console.log('Primeiro registro:', dadosCompletos[0]);
+
+                            dadosFiltradosGeral = [...dadosCompletos];
+                            dadosFiltradosConsulta = [...dadosCompletos];
+                            
+                            preencherFiltros();
+                            atualizarTudo();
+                            showLoading(false);
+                        },
+                        error: (err) => {
+                            console.error('Erro parse:', err);
+                            alert('Erro ao processar CSV. Verifique o console.');
+                            showLoading(false);
+                        }
+                    });
+                } catch (e) {
+                    console.error('Erro fetch:', e);
+                    alert('Erro ao carregar dados. Verifique sua conexão.');
+                    showLoading(false);
+                }
+            }
+
+            // ============================================
+            // PREENCHER FILTROS
+            // ============================================
+            function preencherFiltros() {
+                // Órgãos
+                const orgaos = [...new Set(dadosCompletos.map(d => d.orgao_sigla).filter(Boolean))].sort();
+                const selectOrgaoGeral = document.getElementById('filtroOrgaoGeral');
+                const selectOrgaoConsulta = document.getElementById('filtroOrgaoConsulta');
+                
+                const orgaoOptions = '<option value="todos">Todos os órgãos</option>' + 
+                    orgaos.map(o => `<option value="${o}">${o}</option>`).join('');
+                
+                selectOrgaoGeral.innerHTML = orgaoOptions;
+                selectOrgaoConsulta.innerHTML = orgaoOptions;
+
+                // Cargos
+                const cargos = [...new Set(dadosCompletos.map(d => d.cargo_descricao).filter(Boolean))].sort();
+                const selectCargo = document.getElementById('filtroCargoGeral');
+                selectCargo.innerHTML = '<option value="todos">Todos os cargos</option>' + 
+                    cargos.map(c => `<option value="${c}">${c.substring(0, 30)}</option>`).join('');
+
+                // Anos (a partir do ano_mes)
+                const anos = [...new Set(dadosCompletos.map(d => extrairAno(d.ano_mes)).filter(a => a))].sort();
+                const selectAno = document.getElementById('filtroAnoGeral');
+                selectAno.innerHTML = '<option value="todos">Todos os anos</option>' + 
+                    anos.map(a => `<option value="${a}">${a}</option>`).join('');
+            }
+
+            // ============================================
+            // ATUALIZAR TUDO
+            // ============================================
+            function atualizarTudo() {
+                atualizarMetricas();
+                atualizarGraficos();
+                atualizarTabelaGeral();
+                atualizarTabelaConsulta();
+            }
+
+            // ============================================
+            // MÉTRICAS
+            // ============================================
+            function atualizarMetricas() {
+                const dados = dadosFiltradosGeral;
+                const totalRegistros = dados.length;
+                const totalGasto = dados.reduce((acc, d) => acc + d.valor, 0);
+                const servidores = new Set(dados.map(d => d.masp)).size;
+                const orgaos = new Set(dados.map(d => d.orgao_sigla)).size;
+
+                document.getElementById('metricsContainer').innerHTML = `
+                    <div class="metric-card">
+                        <div class="header-icon"><i class="fas fa-dollar-sign"></i> Despesa Total</div>
+                        <div class="metric-value">${formatarValor(totalGasto)}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="header-icon"><i class="fas fa-users"></i> Servidores</div>
+                        <div class="metric-value">${servidores.toLocaleString('pt-BR')}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="header-icon"><i class="fas fa-building"></i> Órgãos</div>
+                        <div class="metric-value">${orgaos.toLocaleString('pt-BR')}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="header-icon"><i class="fas fa-file-alt"></i> Registros</div>
+                        <div class="metric-value">${totalRegistros.toLocaleString('pt-BR')}</div>
+                    </div>
+                `;
+                document.getElementById('totalRegistrosGeral').innerText = totalRegistros.toLocaleString('pt-BR') + ' registros';
+            }
+
+            // ============================================
+            // GRÁFICOS
+            // ============================================
+            function atualizarGraficos() {
+                const dados = dadosFiltradosGeral;
+                if (dados.length === 0) return;
+
+                // Gráfico por órgão (Top 5)
+                const orgaoMap = new Map();
+                dados.forEach(d => {
+                    const sigla = d.orgao_sigla || 'Sem órgão';
+                    orgaoMap.set(sigla, (orgaoMap.get(sigla) || 0) + d.valor);
+                });
+                const sortedOrgaos = Array.from(orgaoMap.entries())
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+
+                if (orgaoChart) orgaoChart.destroy();
+                const ctxOrgao = document.getElementById('chartOrgao')?.getContext('2d');
+                if (ctxOrgao) {
+                    orgaoChart = new Chart(ctxOrgao, {
+                        type: 'bar',
+                        data: {
+                            labels: sortedOrgaos.map(o => o[0]),
+                            datasets: [{
+                                label: 'Valor (R$)',
+                                data: sortedOrgaos.map(o => o[1]),
+                                backgroundColor: '#1e3a5f',
+                                borderRadius: 6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: { 
+                                y: { 
+                                    ticks: { 
+                                        callback: v => 'R$ ' + v.toLocaleString('pt-BR')
+                                    } 
+                                } 
+                            }
+                        }
+                    });
+                }
+
+                // Gráfico mensal
+                const mesMap = new Map();
+                dados.forEach(d => {
+                    if (d.ano_mes) {
+                        mesMap.set(d.ano_mes, (mesMap.get(d.ano_mes) || 0) + d.valor);
+                    }
+                });
+                const sortedMeses = Array.from(mesMap.entries())
+                    .sort((a, b) => a[0].localeCompare(b[0]))
+                    .slice(-12); // Últimos 12 meses
+
+                if (mesChart) mesChart.destroy();
+                const ctxMes = document.getElementById('chartMes')?.getContext('2d');
+                if (ctxMes) {
+                    mesChart = new Chart(ctxMes, {
+                        type: 'line',
+                        data: {
+                            labels: sortedMeses.map(m => m[0].substring(4,6) + '/' + m[0].substring(0,4)),
+                            datasets: [{
+                                data: sortedMeses.map(m => m[1]),
+                                borderColor: '#c5303e',
+                                backgroundColor: 'rgba(197, 48, 62, 0.05)',
+                                tension: 0.2,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: { 
+                                y: { 
+                                    ticks: { 
+                                        callback: v => 'R$ ' + v.toLocaleString('pt-BR')
+                                    } 
+                                } 
+                            }
+                        }
+                    });
+                }
+            }
+
+            // ============================================
+            // TABELA VISÃO GERAL
+            // ============================================
+            function atualizarTabelaGeral() {
+                const dados = dadosFiltradosGeral.slice(0, 100); // Limita a 100 registros
+                const tbody = document.getElementById('tbodyGeral');
+                tbody.innerHTML = dados.map(d => `
+                    <tr>
+                        <td>${d.ano_mes}</td>
+                        <td>${d.masp}</td>
+                        <td>${d.orgao_sigla}</td>
+                        <td>${d.nome}</td>
+                        <td class="valor-positivo">${formatarValor(d.valor)}</td>
+                        <td>${d.cargo_descricao.substring(0, 30)}</td>
+                        <td>${formatarData(d.data_inicio)}</td>
+                        <td>${formatarData(d.data_termino)}</td>
+                    </tr>
+                `).join('');
+            }
+
+            // ============================================
+            // TABELA CONSULTA
+            // ============================================
+            function atualizarTabelaConsulta() {
+                const tbody = document.getElementById('tbodyConsulta');
+                tbody.innerHTML = dadosFiltradosConsulta.map(d => `
+                    <tr>
+                        <td>${d.ano_mes}</td>
+                        <td>${d.masp}</td>
+                        <td>${d.orgao_sigla}</td>
+                        <td>${d.nome}</td>
+                        <td class="valor-positivo">${formatarValor(d.valor)}</td>
+                        <td>${d.cargo_descricao.substring(0, 30)}</td>
+                        <td>${formatarData(d.data_inicio)}</td>
+                        <td>${formatarData(d.data_termino)}</td>
+                    </tr>
+                `).join('');
+                document.getElementById('totalRegistrosConsulta').innerText = 
+                    dadosFiltradosConsulta.length.toLocaleString('pt-BR') + ' registros';
+            }
+
+            // ============================================
+            // FILTROS DA VISÃO GERAL
+            // ============================================
+            function aplicarFiltrosGeral() {
+                const ano = document.getElementById('filtroAnoGeral').value;
+                const mes = document.getElementById('filtroMesGeral').value;
+                const orgao = document.getElementById('filtroOrgaoGeral').value;
+                const cargo = document.getElementById('filtroCargoGeral').value;
+
+                dadosFiltradosGeral = dadosCompletos.filter(d => {
+                    const matchAno = ano === 'todos' || extrairAno(d.ano_mes) === ano;
+                    const matchMes = mes === 'todos' || extrairMes(d.ano_mes) === mes;
+                    const matchOrgao = orgao === 'todos' || d.orgao_sigla === orgao;
+                    const matchCargo = cargo === 'todos' || d.cargo_descricao === cargo;
+                    return matchAno && matchMes && matchOrgao && matchCargo;
+                });
+
+                atualizarMetricas();
+                atualizarGraficos();
+                atualizarTabelaGeral();
+            }
+
+            function limparFiltrosGeral() {
+                document.getElementById('filtroAnoGeral').value = 'todos';
+                document.getElementById('filtroMesGeral').value = 'todos';
+                document.getElementById('filtroOrgaoGeral').value = 'todos';
+                document.getElementById('filtroCargoGeral').value = 'todos';
+                dadosFiltradosGeral = [...dadosCompletos];
+                atualizarMetricas();
+                atualizarGraficos();
+                atualizarTabelaGeral();
+            }
+
+            // ============================================
+            // FILTROS DA CONSULTA
+            // ============================================
+            function aplicarFiltrosConsulta() {
+                const nome = document.getElementById('filtroNomeConsulta').value.toLowerCase().trim();
+                const masp = document.getElementById('filtroMaspConsulta').value.trim();
+                const orgao = document.getElementById('filtroOrgaoConsulta').value;
+
+                dadosFiltradosConsulta = dadosCompletos.filter(d => {
+                    const matchNome = !nome || d.nome.toLowerCase().includes(nome);
+                    const matchMasp = !masp || d.masp.includes(masp);
+                    const matchOrgao = orgao === 'todos' || d.orgao_sigla === orgao;
+                    return matchNome && matchMasp && matchOrgao;
+                });
+
+                // Aplicar também a busca textual se houver
+                aplicarBuscaTextual();
+            }
+
+            function aplicarBuscaTextual() {
+                const termo = document.getElementById('buscaTextualConsulta').value.toLowerCase().trim();
+                if (!termo) return;
+
+                dadosFiltradosConsulta = dadosFiltradosConsulta.filter(d => {
+                    return d.nome.toLowerCase().includes(termo) ||
+                           d.masp.includes(termo) ||
+                           d.orgao_sigla.toLowerCase().includes(termo) ||
+                           d.cargo_descricao.toLowerCase().includes(termo);
+                });
+            }
+
+            function atualizarConsultaCompleta() {
+                aplicarFiltrosConsulta();
+                atualizarTabelaConsulta();
+            }
+
+            function limparFiltrosConsulta() {
+                document.getElementById('filtroNomeConsulta').value = '';
+                document.getElementById('filtroMaspConsulta').value = '';
+                document.getElementById('filtroOrgaoConsulta').value = 'todos';
+                document.getElementById('buscaTextualConsulta').value = '';
+                dadosFiltradosConsulta = [...dadosCompletos];
+                atualizarTabelaConsulta();
+            }
+
+            // ============================================
+            // EXPORTAR CONSULTA
+            // ============================================
+            function exportarConsulta() {
+                if (dadosFiltradosConsulta.length === 0) {
+                    alert('Nenhum dado para exportar');
+                    return;
+                }
+
+                const headers = ['ano_mes', 'masp', 'orgao_sigla', 'orgao', 'nome', 'valor', 
+                                'cargo_sigla', 'cargo_descricao', 'data_inicio_contrato', 'data_termino_contrato'];
+                
+                const csvRows = [];
+                csvRows.push(headers.join(';'));
+
+                dadosFiltradosConsulta.forEach(d => {
+                    const row = [
+                        d.ano_mes,
+                        d.masp,
+                        d.orgao_sigla,
+                        d.orgao,
+                        d.nome,
+                        d.valor.toString().replace('.', ','),
+                        d.cargo_sigla,
+                        d.cargo_descricao,
+                        d.data_inicio,
+                        d.data_termino
+                    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(';');
+                    csvRows.push(row);
+                });
+
+                const blob = new Blob(['\uFEFF' + csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'consulta_brumadinho.csv';
+                link.click();
+            }
+
+            // ============================================
+            // EVENT LISTENERS
+            // ============================================
+            document.getElementById('btnAplicarFiltrosGeral').addEventListener('click', aplicarFiltrosGeral);
+            document.getElementById('btnLimparFiltrosGeral').addEventListener('click', limparFiltrosGeral);
+            
+            document.getElementById('btnFiltrarConsulta').addEventListener('click', () => {
+                dadosFiltradosConsulta = [...dadosCompletos]; // reset
+                aplicarFiltrosConsulta();
+                atualizarTabelaConsulta();
+            });
+            
+            document.getElementById('limparFiltrosConsulta').addEventListener('click', limparFiltrosConsulta);
+            
+            document.getElementById('buscaTextualConsulta').addEventListener('input', () => {
+                dadosFiltradosConsulta = [...dadosCompletos]; // reset
+                aplicarFiltrosConsulta();
+                atualizarTabelaConsulta();
+            });
+            
+            document.getElementById('exportarConsultaBtn').addEventListener('click', exportarConsulta);
+
+            // ============================================
+            // INICIALIZAÇÃO
+            // ============================================
+            updateDataAtualizacao();
+            carregarDados();
+        })();
+    </script>
+</body>
+</html>
