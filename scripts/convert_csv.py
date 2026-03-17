@@ -16,7 +16,7 @@ def find_all_files():
                 convert_csv(file)
 
 def convert_csv(file, aba=None):
-    read_file = pd.read_excel (f'upload/{file}', aba)
+    read_file = pd.read_excel(f'upload/{file}', sheet_name=aba, dtype=str)
     read_file = list(read_file.items())[0][1] if aba == None else read_file
     read_file = read_file \
                 .replace('\n', ' ', regex=True) \
