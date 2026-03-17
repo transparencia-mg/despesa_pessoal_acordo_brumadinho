@@ -6,7 +6,6 @@ As informações sobre despesas de pessoal são retiradas do Sistema de Administ
 
 A contratação desses profissionais ocorre por meio de Processos Seletivos Simplificados, detalhados no site do Comitê Pró Brumadinho. Mais informações sobre o Acordo podem ser acessadas na página do [Comitê Pró Brumadinho](https://www.mg.gov.br/pro-brumadinho). 
 
-
 ## Como participar
 
 Fique a vontade para utilizar os canais oficiais de atendimento do Poder Executivo Estadual:
