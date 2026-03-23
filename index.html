@@ -948,21 +948,21 @@
             <div class="filter-container">
                 <div class="filters-row">
                     <div class="filter-group">
-                        <label class="filter-label"><i class="material-icons">calendar_today</i>ANO</label>
+                        <label class="filter-label"><i class="material-icons"></i>ANO</label>
                         <select class="form-select modern-select" id="filtroAnoVG">
                             <option value="">Todos</option>
                             ${opcoes.anos.map(a => `<option value="${a}">${a}</option>`).join('')}
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label class="filter-label"><i class="material-icons">date_range</i>MÊS</label>
+                        <label class="filter-label"><i class="material-icons"></i>MÊS</label>
                         <select class="form-select modern-select" id="filtroMesVG">
                             <option value="">Todos</option>
                             ${opcoes.meses.map(m => `<option value="${m}">${meses[parseInt(m)-1] || m}</option>`).join('')}
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label class="filter-label"><i class="material-icons">business</i>ÓRGÃO</label>
+                        <label class="filter-label"><i class="material-icons"></i>ÓRGÃO</label>
                         <select class="form-select modern-select" id="filtroOrgaoVG">
                             <option value="">Todos</option>
                             ${opcoes.orgaos.map(o => `<option value="${o}">${o}</option>`).join('')}
