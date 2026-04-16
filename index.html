@@ -806,6 +806,37 @@
         } catch { return 'Em andamento'; }
     }
 
+    async function setupAtualizacaoData() {
+    const el = document.getElementById('data-atualizacao-header');
+    if (!el) return;
+
+    try {
+        const resp = await fetch(
+            'https://api.github.com/repos/transparencia-mg/despesa_pessoal_acordo_brumadinho/commits?path=dataset/data/despesa-pessoal-acordo-judicial-brumadinho.csv&per_page=1'
+        );
+
+        if (!resp.ok) throw new Error('Erro ao buscar commit');
+
+        const commits = await resp.json();
+
+        if (commits && commits.length > 0) {
+            const data = commits[0].commit.committer.date;
+            const d = new Date(data);
+
+            el.textContent =
+                d.toLocaleDateString('pt-BR') + ' ' +
+                d.toLocaleTimeString('pt-BR');
+            return;
+        }
+
+        el.textContent = 'Não disponível';
+
+    } catch (e) {
+        console.error('Erro ao buscar data:', e);
+        el.textContent = 'Não disponível';
+    }
+}
+    
     function parseCSV(texto) {
         const linhas = texto.trim().split('\n');
         const cabecalhos = linhas[0].split(';').map(h => h.trim());
@@ -916,26 +947,27 @@
     }
 
     // ==================== CARREGAMENTO DE DADOS ====================
-    async function carregarDados() {
-        try {
-            const resposta = await fetch(GITHUB_CSV_URL);
-            const texto = await resposta.text();
-            dadosCompletos = parseCSV(texto);
-            dadosFiltrados = [...dadosCompletos];
-            metricaGeral = calcularMetricas(dadosCompletos);
-            todosServidores = obterServidoresUnicos();
-            servidoresFiltrados = [...todosServidores];
-            
-            renderizarVisaoGeral();
-            renderizarConsulta();
-            renderizarDownloads();
-            
-            document.getElementById('data-atualizacao-header').innerText = new Date().toLocaleString('pt-BR');
-        } catch (erro) {
-            console.error('Erro:', erro);
-            alert('Erro ao carregar dados. Tente novamente mais tarde.');
-        }
+async function carregarDados() {
+    try {
+        const resposta = await fetch(GITHUB_CSV_URL);
+        const texto = await resposta.text();
+        dadosCompletos = parseCSV(texto);
+        dadosFiltrados = [...dadosCompletos];
+        metricaGeral = calcularMetricas(dadosCompletos);
+        todosServidores = obterServidoresUnicos();
+        servidoresFiltrados = [...todosServidores];
+        
+        renderizarVisaoGeral();
+        renderizarConsulta();
+        renderizarDownloads();
+
+        await setupAtualizacaoData(); // ✅ CORRETO
+
+    } catch (erro) {
+        console.error('Erro:', erro);
+        alert('Erro ao carregar dados. Tente novamente mais tarde.');
     }
+}
 
     // ==================== RENDERIZAÇÃO VISÃO GERAL ====================
     function renderizarVisaoGeral() {
