@@ -645,12 +645,13 @@
             background-position: right 8px center;
         }
 
-        /* ==================== METADADOS ==================== */
+        /* ==================== METADADOS / DICIONÁRIO DE DADOS ==================== */
         .metadata-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 0;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
             border-left: 4px solid var(--info-blue);
         }
         .metadata-item { 
@@ -663,16 +664,24 @@
             width: 180px; 
             display: inline-block; 
         }
+        .metadata-card table.table td code {
+            background: #eef2f7;
+            color: var(--primary-dark);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
         
         .filters-row, .consulta-filters-row {
             display: flex;
             gap: 15px;
             width: 100%;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
         
         .filter-group, .consulta-filter-group {
-            flex: 1;
+            flex: 1 1 180px;
+            min-width: 160px;
         }
         
         .botoes-abaixo {
@@ -729,6 +738,7 @@
             <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
                 <li class="nav-item"><button class="nav-link active" id="visao-geral-tab" data-bs-toggle="tab" data-bs-target="#visao-geral"><i class="material-icons">bar_chart</i>Visão Geral</button></li>
                 <li class="nav-item"><button class="nav-link" id="consulta-tab" data-bs-toggle="tab" data-bs-target="#consulta"><i class="material-icons">person</i>Consulta Individual</button></li>
+                <li class="nav-item"><button class="nav-link" id="dicionario-tab" data-bs-toggle="tab" data-bs-target="#dicionario"><i class="material-icons">menu_book</i>Dicionário de Dados</button></li>
                 <li class="nav-item"><button class="nav-link" id="downloads-tab" data-bs-toggle="tab" data-bs-target="#downloads"><i class="material-icons">download</i>Downloads</button></li>
             </ul>
         </div>
@@ -744,6 +754,7 @@
         <div class="tab-content" id="dashboardTabsContent">
             <div class="tab-pane fade show active" id="visao-geral" role="tabpanel"><div id="visao-geral-content"></div></div>
             <div class="tab-pane fade" id="consulta" role="tabpanel"><div id="consulta-content"></div></div>
+            <div class="tab-pane fade" id="dicionario" role="tabpanel"><div id="dicionario-content"></div></div>
             <div class="tab-pane fade" id="downloads" role="tabpanel"><div id="downloads-content"></div></div>
         </div>
     </div>
@@ -789,7 +800,10 @@
     
     function formatarMesAno(anoMes) {
         if (!anoMes || anoMes.length < 6) return anoMes;
-        return `${meses[parseInt(anoMes.substring(4,6))-1] || anoMes.substring(4,6)}/${anoMes.substring(0,4)}`;
+        const mes = parseInt(anoMes.substring(4,6));
+        const ano = anoMes.substring(0,4);
+        if (mes === 13) return `13º Salário/${ano}`;
+        return `${meses[mes-1] || anoMes.substring(4,6)}/${ano}`;
     }
     
     function formatarMASP(masp) {
@@ -871,7 +885,8 @@
         const mesesUnicos = [...new Set(dadosCompletos.map(i => i.ano_mes?.substring(4,6)))].filter(Boolean).sort();
         const orgaos = [...new Set(dadosCompletos.map(i => i.orgao_sigla))].filter(Boolean).sort();
         const cargos = [...new Set(dadosCompletos.map(i => i.cargo_descricao))].filter(Boolean).sort();
-        return { anos, meses: mesesUnicos, orgaos, cargos };
+        const anoMesList = [...new Set(dadosCompletos.map(i => i.ano_mes))].filter(Boolean).sort().reverse();
+        return { anos, meses: mesesUnicos, orgaos, cargos, anoMesList };
     }
 
     function agruparPorOrgao(dados) {
@@ -914,8 +929,22 @@
             return {
                 masp: s.masp, nome: s.nome, orgao_sigla: s.orgao_sigla, orgao: s.orgao,
                 cargo_descricao: s.cargo_descricao, ultimoAnoMes: ultimo.ano_mes, ultimoValor: ultimo.valor,
-                data_termino_contrato: s.data_termino_contrato, historico: s.historico
+                data_termino_contrato: s.data_termino_contrato, historico: s.historico,
+                situacao: determinarSituacao(s.data_termino_contrato)
             };
+        });
+    }
+
+    // Atualiza os ícones de ordenação (seta para cima/baixo) dos cabeçalhos de uma tabela
+    function atualizarIconesOrdenacao(escopoSeletor, colunaAtiva, direcao) {
+        document.querySelectorAll(`${escopoSeletor} .sortable-header`).forEach(th => {
+            const icon = th.querySelector('i.material-icons');
+            if (!icon) return;
+            if (th.dataset.col === colunaAtiva) {
+                icon.textContent = direcao === 'asc' ? 'arrow_upward' : 'arrow_downward';
+            } else {
+                icon.textContent = 'unfold_more';
+            }
         });
     }
 
@@ -928,8 +957,8 @@
         }
         
         servidoresFiltrados.sort((a, b) => {
-            let valorA = a[coluna] || '';
-            let valorB = b[coluna] || '';
+            let valorA = a[coluna] ?? '';
+            let valorB = b[coluna] ?? '';
             if (coluna === 'ultimoValor') {
                 valorA = parseFloat(valorA) || 0;
                 valorB = parseFloat(valorB) || 0;
@@ -942,6 +971,7 @@
             return 0;
         });
         
+        atualizarIconesOrdenacao('#consulta-content', sortConfig.coluna, sortConfig.direcao);
         paginaAtualCI = 1;
         atualizarTabelaConsulta();
     }
@@ -959,6 +989,7 @@ async function carregarDados() {
         
         renderizarVisaoGeral();
         renderizarConsulta();
+        renderizarDicionario();
         renderizarDownloads();
 
         await setupAtualizacaoData(); // ✅ CORRETO
@@ -1002,7 +1033,7 @@ async function carregarDados() {
                     </div>
                 </div>
                 <div class="botoes-abaixo">
-                    <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons me-2">search</i>Pesquisar</button>
+                    <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons me-2">refresh</i>Atualizar Filtros</button>
                     <button class="btn-secondary-custom" onclick="limparFiltrosVG()"><i class="material-icons me-2">clear</i>Limpar Filtros</button>
                 </div>
             </div>
@@ -1046,7 +1077,7 @@ async function carregarDados() {
             <div class="table-container">
                 <div class="table-fixed-header-container">
                     <table class="table">
-                        <thead><tr><th class="sortable-header" onclick="ordenarOrgaosVG('orgao')">Órgão <i class="material-icons">unfold_more</i></th><th>Sigla</th><th class="text-center">Servidores</th><th class="text-right">Valor Total</th></tr></thead>
+                        <thead><tr><th class="sortable-header" data-col="orgao" onclick="ordenarOrgaosVG('orgao')">Órgão <i class="material-icons">unfold_more</i></th><th class="sortable-header" data-col="sigla" onclick="ordenarOrgaosVG('sigla')">Sigla <i class="material-icons">unfold_more</i></th><th class="text-center sortable-header" data-col="servidores" onclick="ordenarOrgaosVG('servidores')">Servidores <i class="material-icons">unfold_more</i></th><th class="text-right sortable-header" data-col="total" onclick="ordenarOrgaosVG('total')">Valor Total <i class="material-icons">unfold_more</i></th></tr></thead>
                         <tbody>${dadosOrgao.map(item => `<tr><td><a href="#" class="orgao-link" onclick="irParaConsulta('${item.sigla}')">${item.orgao}</a></td><td><strong>${item.sigla}</strong></td><td class="text-center">${item.servidores.toLocaleString()}</td><td class="text-right">${formatarMoeda(item.total)}</td></tr>`).join('')}</tbody>
                         <tfoot><tr><td colspan="2" class="fw-bold">Total Geral</td><td class="text-center fw-bold">${dadosOrgao.reduce((a,i)=>a+i.servidores,0).toLocaleString()}</td><td class="text-right fw-bold">${formatarMoeda(dadosOrgao.reduce((a,i)=>a+i.total,0))}</td></tr></tfoot>
                     </table>
@@ -1085,17 +1116,30 @@ async function carregarDados() {
         renderizarVisaoGeral();
     };
 
+    let sortConfigVG = { coluna: '', direcao: 'asc' };
+
     window.ordenarOrgaosVG = function(coluna) {
+        if (sortConfigVG.coluna === coluna) {
+            sortConfigVG.direcao = sortConfigVG.direcao === 'asc' ? 'desc' : 'asc';
+        } else {
+            sortConfigVG.coluna = coluna;
+            sortConfigVG.direcao = 'asc';
+        }
+
         const dadosOrgao = agruparPorOrgao(dadosFiltrados);
+        const numericas = ['servidores', 'total'];
         dadosOrgao.sort((a,b) => {
-            let valA = coluna === 'orgao' ? a.orgao : a.total;
-            let valB = coluna === 'orgao' ? b.orgao : b.total;
-            if (coluna === 'total') { valA = parseFloat(valA); valB = parseFloat(valB); }
-            else { valA = valA.toString().toLowerCase(); valB = valB.toString().toLowerCase(); }
-            if (valA < valB) return -1; if (valA > valB) return 1; return 0;
+            let valA = a[coluna];
+            let valB = b[coluna];
+            if (numericas.includes(coluna)) { valA = parseFloat(valA) || 0; valB = parseFloat(valB) || 0; }
+            else { valA = (valA || '').toString().toLowerCase(); valB = (valB || '').toString().toLowerCase(); }
+            if (valA < valB) return sortConfigVG.direcao === 'asc' ? -1 : 1;
+            if (valA > valB) return sortConfigVG.direcao === 'asc' ? 1 : -1;
+            return 0;
         });
         const tbody = document.querySelector('#visao-geral-content table tbody');
         if (tbody) tbody.innerHTML = dadosOrgao.map(item => `<tr><td><a href="#" class="orgao-link" onclick="irParaConsulta('${item.sigla}')">${item.orgao}</a></td><td><strong>${item.sigla}</strong></td><td class="text-center">${item.servidores.toLocaleString()}</td><td class="text-right">${formatarMoeda(item.total)}</td></tr>`).join('');
+        atualizarIconesOrdenacao('#visao-geral-content', sortConfigVG.coluna, sortConfigVG.direcao);
     };
 
     function filtrarTabelaVG(valor) {
@@ -1119,12 +1163,26 @@ async function carregarDados() {
                         <input type="text" class="form-control" id="filtroMaspCI" placeholder="Digite a matrícula...">
                     </div>
                     <div class="consulta-filter-group">
+                        <label class="filter-label">MÊS/ANO</label>
+                        <select class="form-select modern-select" id="filtroMesAnoCI"><option value="">Todos</option>${opcoes.anoMesList.map(am => `<option value="${am}">${formatarMesAno(am)}</option>`).join('')}</select>
+                    </div>
+                </div>
+                <div class="consulta-filters-row mt-3">
+                    <div class="consulta-filter-group">
                         <label class="filter-label">ÓRGÃO</label>
                         <select class="form-select modern-select" id="filtroOrgaoCI"><option value="">Todos</option>${opcoes.orgaos.map(o => `<option value="${o}">${o}</option>`).join('')}</select>
                     </div>
+                    <div class="consulta-filter-group">
+                        <label class="filter-label">CARGO</label>
+                        <select class="form-select modern-select" id="filtroCargoCI"><option value="">Todos</option>${opcoes.cargos.map(c => `<option value="${c}">${c}</option>`).join('')}</select>
+                    </div>
+                    <div class="consulta-filter-group">
+                        <label class="filter-label">SITUAÇÃO</label>
+                        <select class="form-select modern-select" id="filtroSituacaoCI"><option value="">Todas</option><option value="Em andamento">Em andamento</option><option value="Encerrado">Encerrado</option></select>
+                    </div>
                 </div>
                 <div class="consulta-buttons-row">
-                    <button class="btn-pesquisa" onclick="aplicarFiltrosCI()"><i class="material-icons me-2">search</i>Pesquisar</button>
+                    <button class="btn-pesquisa" onclick="aplicarFiltrosCI()"><i class="material-icons me-2">refresh</i>Atualizar Filtros</button>
                     <button class="btn-secondary-custom" onclick="limparFiltrosCI()"><i class="material-icons me-2">clear</i>Limpar Filtros</button>
                 </div>
             </div>
@@ -1159,7 +1217,7 @@ async function carregarDados() {
             <div class="table-container">
                 <div class="table-fixed-header-container">
                     <table class="table">
-                        <thead><tr><th class="sortable-header" onclick="ordenarTabelaConsulta('masp')">MASP <i class="material-icons">unfold_more</i></th><th class="sortable-header" onclick="ordenarTabelaConsulta('nome')">Nome <i class="material-icons">unfold_more</i></th><th class="sortable-header" onclick="ordenarTabelaConsulta('orgao_sigla')">Órgão <i class="material-icons">unfold_more</i></th><th>Cargo</th><th class="text-center">Mês/Ano</th><th class="text-center">Situação</th><th class="text-right sortable-header" onclick="ordenarTabelaConsulta('ultimoValor')">Último Valor <i class="material-icons">unfold_more</i></th><th class="text-center">Ações</th></tr></thead>
+                        <thead><tr><th class="sortable-header" data-col="masp" onclick="ordenarTabelaConsulta('masp')">MASP <i class="material-icons">unfold_more</i></th><th class="sortable-header" data-col="nome" onclick="ordenarTabelaConsulta('nome')">Nome <i class="material-icons">unfold_more</i></th><th class="sortable-header" data-col="orgao_sigla" onclick="ordenarTabelaConsulta('orgao_sigla')">Órgão <i class="material-icons">unfold_more</i></th><th class="sortable-header" data-col="cargo_descricao" onclick="ordenarTabelaConsulta('cargo_descricao')">Cargo <i class="material-icons">unfold_more</i></th><th class="text-center sortable-header" data-col="ultimoAnoMes" onclick="ordenarTabelaConsulta('ultimoAnoMes')">Mês/Ano <i class="material-icons">unfold_more</i></th><th class="text-center sortable-header" data-col="situacao" onclick="ordenarTabelaConsulta('situacao')">Situação <i class="material-icons">unfold_more</i></th><th class="text-right sortable-header" data-col="ultimoValor" onclick="ordenarTabelaConsulta('ultimoValor')">Último Valor <i class="material-icons">unfold_more</i></th><th class="text-center">Ações</th></tr></thead>
                         <tbody id="servidoresTableBody"></tbody>
                     </table>
                 </div>
@@ -1202,13 +1260,39 @@ async function carregarDados() {
         const nome = (document.getElementById('filtroNomeCI')?.value || '').toLowerCase();
         const masp = (document.getElementById('filtroMaspCI')?.value || '').toLowerCase();
         const orgao = document.getElementById('filtroOrgaoCI')?.value || '';
+        const cargo = document.getElementById('filtroCargoCI')?.value || '';
+        const mesAno = document.getElementById('filtroMesAnoCI')?.value || '';
+        const situacao = document.getElementById('filtroSituacaoCI')?.value || '';
         
-        servidoresFiltrados = todosServidores.filter(s => {
-            if (nome && !s.nome.toLowerCase().includes(nome)) return false;
-            if (masp && !s.masp.toLowerCase().includes(masp)) return false;
-            if (orgao && s.orgao_sigla !== orgao) return false;
-            return true;
-        });
+        servidoresFiltrados = todosServidores.reduce((acc, s) => {
+            if (nome && !s.nome.toLowerCase().includes(nome)) return acc;
+            if (masp && !s.masp.toLowerCase().includes(masp)) return acc;
+            if (situacao && s.situacao !== situacao) return acc;
+
+            // Registro de referência: se houver filtro de MÊS/ANO, usa o registro daquele
+            // mês específico (para exibir órgão/cargo/valor coerentes com o filtro);
+            // caso contrário, usa o registro mais recente do servidor (comportamento padrão).
+            let registro;
+            if (mesAno) {
+                registro = s.historico.find(h => h.ano_mes === mesAno);
+                if (!registro) return acc; // servidor não tem registro nesse mês/ano
+            } else {
+                registro = { ano_mes: s.ultimoAnoMes, valor: s.ultimoValor, orgao_sigla: s.orgao_sigla, orgao: s.orgao, cargo_descricao: s.cargo_descricao };
+            }
+
+            if (orgao && registro.orgao_sigla !== orgao) return acc;
+            if (cargo && registro.cargo_descricao !== cargo) return acc;
+
+            acc.push({
+                ...s,
+                orgao_sigla: registro.orgao_sigla,
+                orgao: registro.orgao,
+                cargo_descricao: registro.cargo_descricao,
+                ultimoAnoMes: registro.ano_mes,
+                ultimoValor: registro.valor
+            });
+            return acc;
+        }, []);
         
         paginaAtualCI = 1;
         atualizarTabelaConsulta();
@@ -1233,6 +1317,9 @@ async function carregarDados() {
         document.getElementById('filtroNomeCI').value = '';
         document.getElementById('filtroMaspCI').value = '';
         document.getElementById('filtroOrgaoCI').value = '';
+        document.getElementById('filtroCargoCI').value = '';
+        document.getElementById('filtroMesAnoCI').value = '';
+        document.getElementById('filtroSituacaoCI').value = '';
         document.getElementById('buscaTabelaCI').value = '';
         servidoresFiltrados = [...todosServidores];
         paginaAtualCI = 1;
@@ -1330,14 +1417,36 @@ async function carregarDados() {
                     <a href="https://dados.mg.gov.br/dataset/despesa_pessoal_acordo_brumadinho" target="_blank" class="btn-secondary-custom"><i class="material-icons">open_in_new</i>Acessar Portal de Dados Abertos</a>
                 </div>
             </div>
-            <div class="metadata-card"><h6 class="fw-bold mb-3"><i class="material-icons me-2">info</i> Metadados da Tabela</h6>
-                <div class="metadata-item"><strong>ano_mes:</strong> Ano e mês de referência (AAAAMM)</div><div class="metadata-item"><strong>masp:</strong> Matrícula do servidor</div>
-                <div class="metadata-item"><strong>orgao_sigla:</strong> Sigla do órgão</div><div class="metadata-item"><strong>orgao:</strong> Nome completo do órgão</div>
-                <div class="metadata-item"><strong>nome:</strong> Nome do servidor</div><div class="metadata-item"><strong>valor:</strong> Valor da despesa (R$)</div>
-                <div class="metadata-item"><strong>cargo_descricao:</strong> Descrição do cargo</div><div class="metadata-item"><strong>data_inicio_contrato:</strong> Data de início do contrato</div>
-                <div class="metadata-item"><strong>data_termino_contrato:</strong> Data de término do contrato</div>
+        `;
+        setTimeout(() => { if (window.parent && window.parent !== window) window.parent.postMessage({ iframeHeight: document.body.scrollHeight + 50 }, '*'); }, 100);
+    }
+
+    // ==================== DICIONÁRIO DE DADOS ====================
+    function renderizarDicionario() {
+        const campos = [
+            ['ano_mes', 'Ano e mês de referência (AAAAMM)'],
+            ['masp', 'Matrícula do servidor'],
+            ['orgao_sigla', 'Sigla do órgão'],
+            ['orgao', 'Nome completo do órgão'],
+            ['nome', 'Nome do servidor'],
+            ['valor', 'Valor da despesa (R$)'],
+            ['cargo_descricao', 'Descrição do cargo'],
+            ['data_inicio_contrato', 'Data de início do contrato'],
+            ['data_termino_contrato', 'Data de término do contrato']
+        ];
+        document.getElementById('dicionario-content').innerHTML = `
+            <div class="metadata-card">
+                <h6 class="fw-bold mb-3"><i class="material-icons me-2">info</i> Metadados da Tabela</h6>
+                <p class="mb-3" style="font-size:13px; color:#5a6a78;">Descrição dos campos disponíveis na base de dados de despesa com pessoal do Acordo Judicial de Brumadinho.</p>
+                <div class="table-fixed-header-container">
+                    <table class="table">
+                        <thead><tr><th>Campo</th><th>Descrição</th></tr></thead>
+                        <tbody>${campos.map(([campo, desc]) => `<tr><td><code>${campo}</code></td><td>${desc}</td></tr>`).join('')}</tbody>
+                    </table>
+                </div>
             </div>
         `;
+        setTimeout(() => { if (window.parent && window.parent !== window) window.parent.postMessage({ iframeHeight: document.body.scrollHeight + 50 }, '*'); }, 100);
     }
 
     window.baixarDadosPorAno = function() {
